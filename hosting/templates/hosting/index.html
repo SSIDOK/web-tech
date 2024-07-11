@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Web-Tech</title>
+    <link rel="icon" type="image/x-icon" href="static/img/logo_small_2.png" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="static/js/crisp.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+      integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css"
+      integrity="sha512-kMPqFnKueEwgQFzXLEEl671aHhQqrZLS5IP3HzqdfozaST/EgU+/wkM07JCmXFAt9GO810I//8DBonsJUzGQsQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="preloader"></div>
+
+    <nav id="main-nav" class="blur">
+      <div class="logo">Web-Tech</div>
+      <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn" />
+      <ul>
+        <li class="trans_li"><a href="{% url 'main' %}">Головна</a></li>
+        <li class="trans_li">
+          <label for="btn-1" class="show">Домен +</label>
+          <a>Домен</a>
+          <input type="checkbox" id="btn-1" />
+          <ul>
+            <li><a href="{% url 'domain_check:domain_check_page' %}">Перевірка домену</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-2" class="show">Хостинг +</label>
+          <a>Хостинг</a>
+          <input type="checkbox" id="btn-2" />
+          <ul>
+            <li><a href="{% url 'host_page:host' %}">Віртуальний-хостинг</a></li>
+            <li><a href="{% url 'host_page:vps_hosting_view' %}"> VPS-хостинг</a></li>
+            <li><a href="{% url 'host_page:cloud_hosting_view' %}">Хмарний хостинг</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-3" class="show">Сервіс +</label>
+          <a>Сервіс</a>
+          <input type="checkbox" id="btn-3" />
+          <ul>
+            <li><a href="{% url 'ftp_storage:ftp_page' %}">FTP-сховище</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-4" class="show">Про нас +</label>
+          <a>Про нас</a>
+          <input type="checkbox" id="btn-4" />
+          <ul>
+            <li><a href="{% url 'ab_cu_t:faq_page' %}"> FAQ (часті запитання)</a></li>
+            <li>
+              <a href="{% url 'ab_cu_t:privacy_policy' %}"> Політика конфіденційності </a>
+            </li>
+          </ul>
+        </li>
+        <li class="trans_li"><a href="{% url 'contact:contact_us_page' %}">Контакти</a></li>
+        {% if user.is_authenticated %}
+          <li class="trans_li">
+            <label for="btn-5" class="show cent_sh"><a class="sign_in">{{ user.username }} +</a></label>
+          <a class="sign_in">{{ user.username }}</a>
+          <input type="checkbox" id="btn-5" />
+          <ul class="cent_sh">
+            <li><a>Кабінет</a></li>
+            <li><a href="{% url 'form:logout' %}">Вийти</a></li>
+          </ul>
+          </li>
+        {% else %}
+          <li class="trans_li"><a href="{% url 'form:login' %}" class="sign_in">Увійти</a></li>
+        {% endif %}
+
+      </ul>
+    </nav>
+    <div class="hero">
+      <div class="hero_text">
+        <h1>Ласкаво просимо на сайт</h1>
+        <p>
+          Потрібна безперебійна робота сайту? <br />Тоді тобі до нас<br />
+          Жми на кнопку і приєднюйся до нас
+        </p>
+        <a href="{% url 'host_page:host' %}" class="hero_button">Дізнатися тарифи</a>
+      </div>
+    </div>
+
+    <div class="ab-us">
+      <h1>Про нас</h1>
+    </div>
+    <div class="responsive-container-block bigContainer">
+      <div class="responsive-container-block Container">
+        <img
+          class="mainImg"
+          src="static/img/wordpress-optimized-hosting-featured-by-ZinetroN-1.png"
+        />
+        <div class="allText aboveText">
+          <p class="text-blk headingText"></p>
+          <p class="text-blk description">
+"Наш сайт для хостингу серверів - це ваш надійний партнер у сфері веб-технологій. Ми пропонуємо широкий спектр послуг, який включає вибір з трьох типів хостингу: спільного, віртуального та власного сервера, щоб задовольнити всі ваші потреби. Ми також надаємо перевірку доступності домену та допомогу у реєстрації та налаштуванні. Крім того, ми пропонуємо послугу FTP-сховища для зручного та безпечного зберігання ваших даних та файлів. З нами ваш веб-проект буде працювати ефективно та безпечно, завдяки нашим передовим технологіям та досвідченій підтримці клієнтів."
+          </p>
+<!--          <button class="explore">Explore</button>-->
+        </div>
+      </div>
+      <div class="responsive-container-block Container bottomContainer">
+          <img class="mainImg" src="static/img/what-is-web-hosting-1-1200x675.jpg" />
+        <div class="allText bottomText">
+          <p class="text-blk headingText"></p>
+          <p class="text-blk description">
+            Наші експерти доступні 7 днів на тиждень за допомогою запитів у
+            службу підтримки, чату та по телефону, коли вам потрібна наша
+            допомога. Незалежно від того, чи потрібна вам допомога з сервером і
+            додаткова допомога, реєстрація домену, перенесення та робота, щоб
+            ваш веб-сайт був повністю доступним, проблеми, пов’язані з
+            хостингом, інструкції з панелі керування, ми тут, щоб допомогти вам.
+          </p>
+<!--          <button class="explore">Explore</button>-->
+        </div>
+      </div>
+    </div>
+    <div class="stat-head"><h1>Статистика</h1></div>
+    <div class="stats-container">
+      <div class="stat">
+        <div class="subscribers-odometer odometer plus">0</div>
+        <div class="type">Клієнти, яких ми обслуговуємо</div>
+      </div>
+
+      <div class="stat">
+        <div class="videos-odometer odometer plus">0</div>
+        <div class="type">Наші клієнти рекомендують нас</div>
+      </div>
+
+      <div class="stat centered-stat">
+        <div class="projects-odometer odometer">0</div>
+        <div class="type">Виграні нагороди</div>
+      </div>
+    </div>
+    <div class="">
+      <h1 class="our-part">Наші партнери</h1>
+      <section class="customer-logos slider">
+        <div class="slide"><img src="static/images/mail_gun_logo.png" alt="logo" /></div>
+        <div class="slide"><img src="static/images/Veeam_logo.png" alt="logo" /></div>
+        <div class="slide"><img src="static/images/google.png" alt="logo" /></div>
+<!--        <div class="slide"><img src="static/images/instagram.png" alt="logo" /></div>-->
+        <div class="slide"><img src="static/images/cpanel_logo.png" alt="logo" /></div>
+<!--        <div class="slide"><img src="static/images/twitter.png" alt="logo" /></div>-->
+        <div class="slide"><img src="static/images/dell_logo.png" alt="logo" /></div>
+        <div class="slide"><img src="static/images/sendgrid_logo.png" alt="logo" /></div>
+      </section>
+    </div>
+    <div class="our-serv">
+      <h1>Наші Послуги</h1>
+    </div>
+    <div class="container_block">
+      <div class="block">
+        <img src="static/logos/ssl_certificate.png" alt="Image 1" />
+        <p>
+          Безкоштовні сертифікати SSL Ми надаємо безкоштовний SSL-сертифікат
+          Let's Encrypt для кожного облікового запису.
+        </p>
+      </div>
+      <div class="block">
+        <img src="static/logos/hacker_supp.png" alt="Image 2" />
+        <p>
+          Цілодобова підтримка в реальному часі Потрібна деяка допомога? Наша
+          віддана команда експертів із хостингу готова допомогти через чат.
+        </p>
+      </div>
+      <div class="block">
+        <img src="static/logos/hardware.png" alt="Image 3" />
+        <p>
+          Високоякісне обладнання Ми використовуємо новітні апаратні рішення,
+          які регулярно оновлюються та обслуговуються.
+        </p>
+      </div>
+      <div class="block">
+        <img src="static/logos/protection.png" alt="Image 1" />
+        <p>
+          Захист на рівні сервера Забезпечуємо захист вашого сайту від DDoS-атак
+          та інших веб-загроз.
+        </p>
+      </div>
+      <div class="block">
+        <img src="static/logos/ssd_drivers.png" alt="Image 2" />
+        <p>
+          Накопичувачі SSD для всіх планів Для більшої швидкості ми
+          використовуємо твердотільні накопичувачі в усіх наших планах
+          веб-хостингу.
+        </p>
+      </div>
+      <div class="block">
+        <img src="static/logos/speed_tech.png" alt="Image 3" />
+        <p>
+          Новітні швидкісні технології Підвищена продуктивність завдяки NGINX,
+          HTTP/2, PHP7 і безкоштовному CDN.
+        </p>
+      </div>
+    </div>    
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Про нас</h4>
+            Web-Tech пропонує чудовий, надійний і доступний веб-хостинг для
+            окремих осіб і малих компаній у всьому світі.
+          </div>
+          <div class="footer-col">
+            <h4>Компанія</h4>
+            <ul>
+              <li><a href="{% url 'main' %}">Головна</a></li>
+              <li><a href="{% url 'domain_check:domain_check_page' %}">Перевірка домену</a></li>
+              <li><a href="{% url 'ftp_storage:ftp_page' %}">FTP-сховище</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Допомога</h4>
+            <ul>
+              <li><a href="{% url 'ab_cu_t:faq_page' %}">FAQ</a></li>
+              <li><a href="{% url 'ab_cu_t:privacy_policy' %}">Політика конфіденційності</a></li>
+              <li><a href="{% url 'contact:contact_us_page' %}">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+                  <h4>Хостинг</h4>
+                  <ul>
+                    <li><a href="{% url 'host_page:host' %}">Віртуальний-хостинг</a></li>
+                    <li><a href="{% url 'host_page:vps_hosting_view' %}"> VPS-хостинг</a></li>
+                    <li><a href="{% url 'host_page:cloud_hosting_view' %}">Хмарний хостинг</a></li>
+                  </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Слідкувати за нами:</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://twitter.com/?lang=en"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="https://www.instagram.com/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://ua.linkedin.com/"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="static/js/script.js"></script>
+  </body>
+</html>

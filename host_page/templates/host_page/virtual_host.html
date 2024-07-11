@@ -1,0 +1,130 @@
+{% extends 'host_page/base.html' %}
+
+{% block title %}Віртуальний хостинг{% endblock %}
+
+{% block content %}
+    <div class="container-dom">
+      <div class="dom-h1">
+        <h1>Віртуальний хостинг</h1>
+      </div>
+      <div class="dom-text">
+        Віртуальний хостинг - це доступний варіант з широким спектром функцій,
+        що дозволяє користувачам створювати та керувати веб-сайтом. Ми надаємо
+        швидкий і надійний віртуальний хостинг для особистих або бізнес-цілей.
+        Підвищіть ефективність вашого сайту за допомогою наших пакетів
+        віртуального хостингу. Це недорога послуга для невеликих проектів.
+        Обладнання ми розміщуємо у високотехнологічному, сучасному та надійному
+        дата-центрі.
+      </div>
+    </div>
+{% endblock %}
+
+{% block cards %}
+    <div class="container-card">
+        {% for product in products_virtual %}
+    <div class="card">
+        <h2>{{ product.name }}</h2>
+        <div class="price" data-price="{{ product.price }}">Ціна {{ product.price }} ₴</div>
+          <form>
+              <div class="info-row">
+                  <span class="info-label">SSD:</span>
+                  <span class="info-value" id="ssd1">{{ product.ssd }} GB</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Сайти:</span>
+                  <span class="info-value" id="websites1">{{ product.websites }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Піддомени:</span>
+                  <span class="info-value" id="subdomains1">{{ product.subdomains }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Бази даних:</span>
+                  <span class="info-value" id="databases1">{{ product.databases }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">RAM:</span>
+                  <span class="info-value" id="ram1">{{ product.ram }} GB</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">SSL:</span>
+                  <span class="info-value" id="ssl1">{{ product.get_ssl_display }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Період:</span>
+                  <span class="info-value" id="period1">1 місяць</span>
+              </div>
+<!--              <div class="info-row">-->
+<!--                  <span class="info-label">Період:</span>-->
+<!--                    <select id="period1" name="period1">-->
+<!--                      <option value="1">1 місяць</option>-->
+<!--                      <option value="3">3 місяці</option>-->
+<!--                      <option value="6">6 місяців</option>-->
+<!--                      <option value="12">12 місяців</option>-->
+<!--                    </select>-->
+<!--              </div>-->
+              <button type="button" class="buy-button">Купити</button>
+          </form>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}
+
+{% block host_try %}
+    <div class="hosting_try">
+      <p class="hosting_try-text">
+        Перший місяць віртуальний хостинг <span class="hosting_highlighted-try-text">безкоштовно!</span>
+        <br>
+        <br>
+        Реєструйся, поповни баланс на <span class="hosting_highlighted-try-text">€1</span> і тестуй.
+      </p>
+      <a class="hosting_try-btn" href="">
+        <span class="common-btn-text">ОТРИМАТИ</span>
+      </a>
+    </div>
+{% endblock %}
+
+{% block faqs %}
+  <section id="section_faq" class="section_faq">
+    <h1>Питання що часто задаються</h1>
+    <ul>
+      <li>
+        <div class="question">
+          <span>
+            Що таке віртуальний хостинг і для чого він потрібен?
+          </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            Віртуальний хостинг - це набір певного об'єму ресурсів з попередньо встановленою панеллю керування, що надаються на правах оренди та відповідно до обраного тарифу користувачеві для розміщення сайтів. Якщо у вас невеликий сайт, інтернет-магазин, сайт-візитка, блог, лендінг, який не вимагає багато ресурсів або ви хочете його протестувати, то можете використовувати для цього послугу віртуального хостингу. Оскільки на хостингу вже встановлена панель управління, то завантажити файли свого проекту не складе ніяких труднощів. Також є можливість розгорнути CMS з наших шаблонів в один клік, що не може не тішити, бо не потрібно робити зайвих рухів з пошуком, завантаженням і встановленням.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <span> Наскільки стабільно працює послуга віртуального хостингу та яке обладнання використовується? </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            Наші сервери розташовані в надійному дата-центрі в Нідерландах, де дотримуються всі техніки безпеки та належне обслуговування обладнання. Ми забезпечуємо цілодобову надійну техпідтримку. Uptime наших серверів 99.9%, що свідчить про стабільність їхньої роботи та постійну доступність. Використовується сучасне обладнання відомих і перевірених часом компаній Hewlett Packard, Samsung, IBM, Intel, Dell.
+          </span>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <span>
+            Як забезпечується безпека на віртуальному хостингу?
+            </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            Постачальники віртуального хостингу надають захист від DDoS-атак, резервне копіювання даних, файрволи та інші заходи безпеки для вашого веб-сайту.
+            </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+{% endblock %}

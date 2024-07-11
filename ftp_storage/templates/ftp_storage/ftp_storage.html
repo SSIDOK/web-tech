@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTP-сховище</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo_small_2.png'%}" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+      <script type="text/javascript" src="{% static 'js/crisp.js' %}"></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+      integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"
+      integrity="sha512-v3fZyWIk7kh9yGNQZf1SnSjIxjAKsYbg6UQ+B+QxAZqJQLrN3jMjrdNwcxV6tis6S0s1xyVDZrDz9UoRLfRpWw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+      integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+      integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css"
+      integrity="sha512-kMPqFnKueEwgQFzXLEEl671aHhQqrZLS5IP3HzqdfozaST/EgU+/wkM07JCmXFAt9GO810I//8DBonsJUzGQsQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"/>
+</head>
+<body>
+    <nav id="main-nav" class="blur">
+      <div class="logo">Web-Tech</div>
+      <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+      </label>
+      <input type="checkbox" id="btn" />
+      <ul>
+        <li class="trans_li"><a href="{% url 'main' %}">Головна</a></li>
+        <li class="trans_li">
+          <label for="btn-1" class="show">Домен +</label>
+          <a>Домен</a>
+          <input type="checkbox" id="btn-1" />
+          <ul>
+            <li><a href="{% url 'domain_check:domain_check_page' %}">Перевірка домену</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-2" class="show">Хостинг +</label>
+          <a>Хостинг</a>
+          <input type="checkbox" id="btn-2" />
+          <ul>
+            <li><a href="{% url 'host_page:host' %}">Віртуальний-хостинг</a></li>
+            <li><a href="{% url 'host_page:vps_hosting_view' %}"> VPS-хостинг</a></li>
+            <li><a href="{% url 'host_page:cloud_hosting_view' %}">Хмарний хостинг</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-3" class="show">Сервіс +</label>
+          <a>Сервіс</a>
+          <input type="checkbox" id="btn-3" />
+          <ul>
+            <li><a href="{% url 'ftp_storage:ftp_page' %}">FTP-сховище</a></li>
+          </ul>
+        </li>
+        <li class="trans_li">
+          <label for="btn-4" class="show">Про нас +</label>
+          <a>Про нас</a>
+          <input type="checkbox" id="btn-4" />
+          <ul>
+            <li><a href="{% url 'ab_cu_t:faq_page' %}"> FAQ (часті запитання)</a></li>
+            <li>
+              <a href="{% url 'ab_cu_t:privacy_policy' %}"> Політика конфіденційності </a>
+            </li>
+          </ul>
+        </li>
+        <li class="trans_li"><a href="{% url 'contact:contact_us_page' %}">Контакти</a></li>
+        {% if user.is_authenticated %}
+          <li class="trans_li">
+            <label for="btn-5" class="show cent_sh"><a class="sign_in">{{ user.username }} +</a></label>
+          <a class="sign_in">{{ user.username }}</a>
+          <input type="checkbox" id="btn-5" />
+          <ul class="cent_sh">
+            <li><a>Кабінет</a></li>
+            <li><a href="{% url 'form:logout' %}">Вийти</a></li>
+          </ul>
+          </li>
+        {% else %}
+          <li class="trans_li"><a href="{% url 'form:login' %}" class="sign_in">Увійти</a></li>
+        {% endif %}
+
+      </ul>
+    </nav>
+
+    <div class="ftp-cont">
+        <div class="ftp-cont-h1"><h1>FTP сховище</h1></div>
+        <div class="ftp-cont-text">Втрата важливих даних часто стає непоправною для компанії і для її виникнення є багато різних причин: від вірусів та збоїв на програмному рівні до форматування носіїв і виходу обладнання з ладу. Тому потрібно не лише регулярно робити резервні копії, а й тримати їх у безпечному місці. FTP-сховище – надійний та зручний сервер для резервних копій.</div>
+    </div>
+    <div class="container-ftp">
+    {% for product in products_ftp %}
+        <div class="card-ftp">
+            {% if product.name %}
+                <h3>{{ product.name }}</h3>
+            {% endif %}
+            <div class="card-ftp-content">
+                <p class="price-ftp">Ціна: {{ product.price }} ₴</p>
+                <p>Вмістимість: {{ product.capacity }} ГБ</p>
+                {% if product.support %}
+                    <p>Підтримка: {{ product.get_support_display }}</p>
+                {% endif %}
+                {% if product.ssl %}
+                    <p>SSL: {{ product.get_ssl_display }}</p>
+                {% endif %}
+                {% if product.rent_duration %}
+                    <p>Час оренди: {{ product.get_rent_duration_display }}</p>
+                {% endif %}
+            </div>
+            <a href="#" class="ftp-btn">Купити</a>
+        </div>
+    {% endfor %}
+</div>
+
+    <div class="container-ftp-how">
+        <h1>Інструкція замовлення FTP</h1>
+        
+        <div class="card-ftp-how">
+            <div class="card-ftp-how-title">Крок 1:</div>
+            <div class="card-ftp-how-content">Виберіть відповідний Вам тарифний план</div>
+        </div>
+        
+        <div class="card-ftp-how">
+            <div class="card-ftp-how-title">Крок 2:</div>
+            <div class="card-ftp-how-content">Заповніть коротку форму реєстрації, оформлення замовлення</div>
+        </div>
+        
+        <div class="card-ftp-how">
+            <div class="card-ftp-how-title">Крок 3:</div>
+            <div class="card-ftp-how-content">
+                Отримайте логін та пароль від свого сховища,
+                завантажте туди інформацію</div>
+        </div>
+    
+        <div class="card-ftp-how">
+            <div class="card-ftp-how-title">Крок 4:</div>
+            <div class="card-ftp-how-content">Будьте впевнені, що Ваші дані тепер під надійним захистом</div>
+        </div>
+        </div>
+    <section id="section_faq" class="section_faq">
+        <h1>Питання що часто задаються</h1>
+        <ul>
+          <li>
+            <div class="question">
+              <span>
+                Чи можна змінити тариф?
+              </span>
+              <span class="icon"><ion-icon name="add"></ion-icon></span>
+            </div>
+            <div class="answer">
+              <span>
+                Так, ви можете зробити це будь-якої миті, без втрати вже завантажених файлів на диск.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="question">
+              <span> Чи можу я дати комусь доступ до свого диска? </span>
+              <span class="icon"><ion-icon name="add"></ion-icon></span>
+            </div>
+            <div class="answer">
+              <span>
+                Так звичайно. Разом з диском ви отримуєте доступ до функціональної панелі керування, де можна створити під-користувачів, а також додаткові FTP акаунти.
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="question">
+              <span>
+                Яка швидкість каналу зв'язку?
+                </span>
+              <span class="icon"><ion-icon name="add"></ion-icon></span>
+            </div>
+            <div class="answer">
+              <span> На серверах, де розміщується послуга, підключення до каналу на швидкості 1 Гбіт/с.</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <div class="help">
+        <div class="help_back">
+          <h1>Потрібна допомога? Ми завжди тут для вас.</h1>
+        </div>
+      </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>Про нас</h4>
+            Web-Tech пропонує чудовий, надійний і доступний веб-хостинг для
+            окремих осіб і малих компаній у всьому світі.
+          </div>
+          <div class="footer-col">
+            <h4>Компанія</h4>
+            <ul>
+              <li><a href="{% url 'main' %}">Головна</a></li>
+              <li><a href="{% url 'domain_check:domain_check_page' %}">Перевірка домену</a></li>
+              <li><a href="{% url 'ftp_storage:ftp_page' %}">FTP-сховище</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Допомога</h4>
+            <ul>
+              <li><a href="{% url 'ab_cu_t:faq_page' %}">FAQ</a></li>
+              <li><a href="{% url 'ab_cu_t:privacy_policy' %}">Політика конфіденційності</a></li>
+              <li><a href="{% url 'contact:contact_us_page' %}">Контакти</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+                  <h4>Хостинг</h4>
+                  <ul>
+                    <li><a href="{% url 'host_page:host' %}">Віртуальний-хостинг</a></li>
+                    <li><a href="{% url 'host_page:vps_hosting_view' %}"> VPS-хостинг</a></li>
+                    <li><a href="{% url 'host_page:cloud_hosting_view' %}">Хмарний хостинг</a></li>
+                  </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Слідкувати за нами:</h4>
+            <div class="social-links">
+              <a href="https://www.facebook.com/"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://twitter.com/?lang=en"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="https://www.instagram.com/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://ua.linkedin.com/"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"> </script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" > </script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{% extends 'host_page/base.html' %}
+
+{% block title %}VPS хостинг{% endblock %}
+
+{% block content %}
+<div class="container-dom">
+    <div class="dom-h1">
+        <h1>VPS хостинг</h1>
+    </div>
+    <div class="dom-text">
+        VPS хостинг (віртуальний приватний сервер) — це вид хостингу, де ви отримуєте віртуальну машину з окремими ресурсами, яка працює на спільному фізичному сервері з іншими віртуальними машинами.
+    </div>
+</div>
+{% endblock %}
+
+{% block cards %}
+<div class="container-card">
+        {% for product in products_vps %}
+    <div class="card">
+        <h2>{{ product.name }}</h2>
+        <div class="price" data-price="{{ product.price }}">Ціна {{ product.price }} ₴</div>
+          <form>
+              <div class="info-row">
+                  <span class="info-label">vCPU:</span>
+                  <span class="info-value" id="ssd1">{{ product.vcpu }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">RAM:</span>
+                  <span class="info-value" id="websites1">{{ product.ram }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">SSD:</span>
+                  <span class="info-value" id="subdomains1">{{ product.ssd }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">OS:</span>
+                  <span class="info-value" id="databases1">{{ product.os }}</span>
+              </div>
+              <div class="info-row">
+                  <span class="info-label">Період:</span>
+                  <span class="info-value" id="period1">1 місяць</span>
+              </div>
+              <button type="button" class="buy-button">Купити</button>
+          </form>
+      </div>
+      {% endfor %}
+    </div>
+{% endblock %}
+
+{% block host_try %}
+<div class="hosting_try">
+      <p class="hosting_try-text">
+        Перший місяць VPS хостинг <span class="hosting_highlighted-try-text">безкоштовно!</span>
+        <br>
+        <br>
+        Реєструйся, поповни баланс на <span class="hosting_highlighted-try-text">€1</span> і тестуй.
+      </p>
+      <a class="hosting_try-btn" href="">
+        <span class="common-btn-text">ОТРИМАТИ</span>
+      </a>
+    </div>
+{% endblock %}
+
+{% block faqs %}
+  <section id="section_faq" class="section_faq">
+    <h1>Питання що часто задаються</h1>
+    <ul>
+      <li>
+        <div class="question">
+          <span>
+                Що таке VPS хостинг і чому він кращий за веб-хостинг?
+          </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            VPS (віртуальний приватний сервер) - це вид хостингу, де ви отримуєте віртуальну машину з окремими ресурсами, яка працює на спільному фізичному сервері з іншими віртуальними машинами. Це краще, ніж веб-хостинг, оскільки ви маєте більше контролю над сервером і більше ресурсів для вашого веб-сайту.          </span>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <span>
+              Які переваги VPS хостингу в порівнянні зі спільним веб-хостингом?
+          </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            VPS надає більше обсягу ресурсів, більшу еластичність у налаштуваннях, вищий рівень безпеки та незалежність від інших користувачів на сервері, що робить його більш надійним для веб-сайтів з високим навантаженням або великим обсягом даних.          </span>
+        </div>
+      </li>
+      <li>
+        <div class="question">
+          <span>
+            Які можливості масштабування є на VPS хостингу?
+            </span>
+          <span class="icon"><ion-icon name="add"></ion-icon></span>
+        </div>
+        <div class="answer">
+          <span>
+            VPS-хостинг зазвичай має можливості масштабування вгору або вниз, що дозволяє змінювати ресурси (такі як обсяг пам'яті, обчислювальна потужність) в залежності від зростаючих або зменшуються потреб вашого веб-сайту.
+            </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+{% endblock %}
+
